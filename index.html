@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>人の名前にする</title>
+  <meta name="description" content="ランダムに出てくるひらがなを並べて、人の名前っぽくする遊び">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="title">人の名前にする</h1>
+
+    <!-- 設定画面 -->
+    <section id="setup" class="screen">
+      <p class="lead">出てくるひらがなを好きな位置に置いて、<br>人の名前っぽくしよう。</p>
+
+      <fieldset class="option">
+        <legend>名前の文字数</legend>
+        <div class="choices" id="length-choices">
+          <label><input type="radio" name="length" value="random" checked><span>ランダム</span></label>
+          <label><input type="radio" name="length" value="5"><span>5</span></label>
+          <label><input type="radio" name="length" value="6"><span>6</span></label>
+          <label><input type="radio" name="length" value="7"><span>7</span></label>
+          <label><input type="radio" name="length" value="8"><span>8</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="option">
+        <legend>濁点・半濁点・小文字への変換</legend>
+        <div class="choices" id="convert-choices">
+          <label><input type="radio" name="convert" value="none"><span>使えない</span></label>
+          <label><input type="radio" name="convert" value="once" checked><span>一度だけ使える</span></label>
+          <label><input type="radio" name="convert" value="always"><span>常に使える</span></label>
+        </div>
+      </fieldset>
+
+      <button type="button" id="start-btn" class="primary">はじめる</button>
+    </section>
+
+    <!-- プレイ画面 -->
+    <section id="play" class="screen" hidden>
+      <p id="length-info" class="info"></p>
+      <div id="slots" class="slots" aria-label="名前の枠"></div>
+
+      <div id="turn" class="turn">
+        <p id="progress" class="progress"></p>
+        <div class="current-wrap">
+          <div id="current" class="current" aria-live="polite"></div>
+        </div>
+        <div id="convert-area" class="convert-area">
+          <p id="convert-note" class="convert-note"></p>
+          <div id="variants" class="variants"></div>
+        </div>
+        <p class="hint">置きたい枠をタップしてください</p>
+      </div>
+
+      <div id="result" class="result" hidden>
+        <p class="done">完成！</p>
+        <p class="result-sub">この名前、人の名前っぽい？</p>
+        <div class="result-buttons">
+          <button type="button" id="again-btn" class="primary">もう一度</button>
+          <button type="button" id="settings-btn" class="secondary">設定を変える</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
